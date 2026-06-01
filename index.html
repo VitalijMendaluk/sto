@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="uk" itemscope itemtype="https://schema.org/AutoRepair">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoPrecision Warsaw — Ремонт авто у Варшаві</title>
+<meta name="description" content="Сервіс технічного обслуговування автомобілів у Варшаві. Діагностика, ремонт підвіски, гальма, кузовні роботи. Запис онлайн.">
+<meta name="keywords" content="ремонт авто Варшава, СТО Варшава, serwis samochodowy Warszawa, naprawa auta Warszawa">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://autoprecision.pl/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AutoPrecision Warsaw — Ремонт авто у Варшаві">
+<meta property="og:description" content="Сервіс технічного обслуговування автомобілів у Варшаві. Запис онлайн.">
+<meta property="og:image" content="1.jpg">
+<meta property="og:url" content="https://autoprecision.pl/">
+<meta property="og:locale" content="uk_UA">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "AutoPrecision Warsaw",
+  "description": "Сервіс технічного обслуговування автомобілів у Варшаві",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Warszawa",
+    "addressCountry": "PL"
+  },
+  "telephone": "+48 123 456 789",
+  "openingHours": "Mo-Sa 08:00-19:00",
+  "priceRange": "zł zł",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "312"
+  }
+}
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   ROOT & RESET
+   ============================================================ */
+:root {
+  --bg:       #111827;
+  --surface:  #1a2235;
+  --surface2: #1f2a3d;
+  --accent:   #F97316;
+  --accent-d: #ea6500;
+  --white:    #FFFFFF;
+  --muted:    rgba(255,255,255,0.45);
+  --border:   rgba(255,255,255,0.07);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --radius: 12px;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+ul { list-style: none; }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.display { font-family: var(--font-display); font-weight: 300; line-height: 1.1; }
+.display em { font-style: italic; color: var(--accent); }
+
+h2.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 0.4em;
+}
+h2.section-title em { font-style: italic; color: var(--accent); }
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0d0d0d;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s;
+}
+.btn-primary:hover::after { left: 150%; }
+.btn-primary:hover { background: var(--accent-d); transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.35);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(249,115,22,0.06);
+}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section { padding: 6rem 0; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 0;
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled {
+  background: rgba(17,24,39,0.95);
+  backdrop-filter: blur(16px);
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+  transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Language switcher */
+.lang-switcher {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.lang-btn {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  transition: var(--transition);
+  background: transparent;
+}
+.lang-btn.active {
+  background: var(--accent);
+  color: #0d0d0d;
+}
+.lang-btn:hover:not(.active) { color: var(--white); }
+
+/* Burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  padding: 4px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  height: 1.5px;
+  background: var(--white);
+  transition: var(--transition);
+  transform-origin: center;
+}
+
+/* Mobile overlay */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: #080808;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.mobile-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.overlay-close {
+  position: absolute;
+  top: 1.5rem; right: 2rem;
+  font-size: 1.8rem;
+  color: var(--white);
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+.overlay-nav {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.overlay-nav a {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 8vw, 3.5rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: -0.01em;
+  transition: color 0.25s;
+  line-height: 1.2;
+}
+.overlay-nav a:hover { color: var(--white); }
+.overlay-lang {
+  margin-top: auto;
+  display: flex;
+  gap: 1rem;
+}
+.overlay-lang .lang-btn {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(17,24,39,0.92) 0%,
+    rgba(17,24,39,0.75) 50%,
+    rgba(17,24,39,0.6) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 7rem;
+  padding-bottom: 12rem;
+}
+
+.hero-label {
+  animation: fadeSlideUp 0.7s ease both;
+  animation-delay: 0.3s;
+}
+.hero-title {
+  font-size: clamp(3rem, 6.5vw, 6.5rem);
+  max-width: 780px;
+  animation: fadeSlideUp 0.7s ease both;
+  animation-delay: 0.55s;
+}
+.hero-sub {
+  margin-top: 1.25rem;
+  color: rgba(255,255,255,0.65);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  max-width: 540px;
+  animation: fadeSlideUp 0.7s ease both;
+  animation-delay: 0.75s;
+}
+.hero-checks {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.7s ease both;
+  animation-delay: 0.95s;
+}
+.hero-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+}
+.hero-check svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.7s ease both;
+  animation-delay: 1.1s;
+}
+
+/* Floating rating card */
+.hero-rating {
+  position: absolute;
+  bottom: 9rem;
+  right: 3rem;
+  z-index: 2;
+  background: rgba(26,34,53,0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  min-width: 200px;
+  animation: fadeSlideUp 0.7s ease both;
+  animation-delay: 1.3s;
+}
+.rating-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.4rem;
+}
+.rating-stars span { color: var(--accent); font-size: 1rem; }
+.rating-score {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.rating-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+.rating-source {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.google-g {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #4285F4;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: white;
+  flex-shrink: 0;
+}
+
+/* Stats bar */
+.hero-stats {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  background: rgba(26,34,53,0.7);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  animation: fadeSlideUp 0.7s ease both;
+  animation-delay: 1.2s;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 3rem;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.25rem;
+  font-weight: 300;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   WHY US
+   ============================================================ */
+#why {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  margin-top: 3.5rem;
+  background: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.why-card {
+  background: var(--surface2);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+.why-card:hover {
+  background: #222e45;
+  border-bottom-color: var(--accent);
+}
+.why-icon {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.2);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  transition: var(--transition);
+}
+.why-card:hover .why-icon {
+  background: rgba(249,115,22,0.18);
+  border-color: rgba(249,115,22,0.4);
+}
+.why-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+.why-card p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.service-card {
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.35s;
+}
+.service-card:hover { border-bottom-color: var(--accent); }
+
+.service-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.service-card:hover img { transform: scale(1.06); }
+
+.service-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(17,24,39,0.95) 0%, rgba(17,24,39,0.3) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem;
+}
+.service-num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.4rem;
+}
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+.service-card p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+.service-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: gap 0.25s;
+}
+.service-card:hover .service-cta { gap: 0.7rem; }
+
+/* ============================================================
+   PORTFOLIO
+   ============================================================ */
+#portfolio { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.portfolio-item {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  cursor: pointer;
+}
+.portfolio-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.35s;
+}
+.portfolio-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.7);
+}
+.portfolio-zoom {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.portfolio-item:hover .portfolio-zoom { opacity: 1; }
+.portfolio-zoom-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(249,115,22,0.9);
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+}
+
+/* Portfolio modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+  backdrop-filter: blur(8px);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-img-wrap {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+}
+.modal-img-wrap img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.modal-close {
+  position: absolute;
+  top: -2.5rem; right: 0;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.2rem;
+  transition: background 0.25s;
+}
+.modal-close:hover { background: var(--accent); }
+
+/* ============================================================
+   HOW WE WORK
+   ============================================================ */
+.process-wrap {
+  display: flex;
+  gap: 0;
+  min-height: 500px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-top: 3rem;
+}
+.process-steps {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+.process-step {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.process-step:last-child { border-bottom: none; }
+.process-step:hover { background: var(--surface2); }
+.step-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(249,115,22,0.25);
+  line-height: 1;
+  min-width: 2.5rem;
+  transition: color 0.3s;
+}
+.process-step:hover .step-num { color: var(--accent); }
+.step-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+.step-content p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.process-photo {
+  width: 380px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.process-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.process-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(17,24,39,0.3) 0%, transparent 40%);
+}
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+#reviews { overflow: hidden; border-top: 1px solid var(--border); }
+
+.reviews-track-wrap {
+  overflow: hidden;
+  margin-top: 3rem;
+  position: relative;
+}
+.reviews-track-wrap::before,
+.reviews-track-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.reviews-track-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+.reviews-track-wrap::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg), transparent);
+}
+.reviews-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: scrollTrack 40s linear infinite;
+}
+.reviews-track:hover { animation-play-state: paused; }
+
+@keyframes scrollTrack {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.review-card {
+  width: 320px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: border-color 0.3s;
+}
+.review-card:hover { border-color: rgba(249,115,22,0.3); }
+.review-stars { display: flex; gap: 2px; margin-bottom: 0.75rem; }
+.review-stars span { color: var(--accent); font-size: 0.85rem; }
+.review-text {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.review-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-d));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0d0d0d;
+  flex-shrink: 0;
+}
+.review-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.review-date {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* ============================================================
+   CTA + FORM
+   ============================================================ */
+#contact {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.contact-bg {
+  position: absolute;
+  inset: 0;
+}
+.contact-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.contact-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(17,24,39,0.95) 0%, rgba(17,24,39,0.75) 50%, rgba(17,24,39,0.6) 100%);
+}
+.contact-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 5rem;
+  align-items: center;
+}
+.contact-left {}
+.contact-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+.contact-left h2 em { font-style: italic; color: var(--accent); }
+.contact-left p {
+  color: rgba(255,255,255,0.65);
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.contact-benefits { display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-benefit {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.9rem; color: rgba(255,255,255,0.8);
+}
+.contact-benefit svg { color: var(--accent); flex-shrink: 0; }
+
+/* Glass form */
+.form-glass {
+  background: rgba(26,34,53,0.65);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 2.5rem;
+}
+.form-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0.35rem;
+}
+.form-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: border-color 0.25s, background 0.25s;
+  outline: none;
+}
+.form-group select option { background: var(--surface); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(249,115,22,0.5);
+  background: rgba(255,255,255,0.07);
+}
+.form-submit { width: 100%; justify-content: center; padding: 1rem; font-size: 0.95rem; margin-top: 0.5rem; }
+
+/* Thank you state */
+.form-thankyou {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  gap: 1rem;
+}
+.thankyou-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(249,115,22,0.15);
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  font-size: 1.75rem;
+}
+.form-thankyou h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.form-thankyou p { font-size: 0.9rem; color: var(--muted); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: #0b1120;
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  transition: color 0.25s;
+}
+.footer-links a:hover { color: var(--accent); }
+
+/* ============================================================
+   POPUP — SCROLL / TIMER
+   ============================================================ */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+  backdrop-filter: blur(6px);
+}
+.popup-overlay.open { opacity: 1; pointer-events: all; }
+
+.popup-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 460px;
+  width: calc(100% - 2rem);
+  position: relative;
+}
+.popup-close {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+.popup-close:hover { background: rgba(249,115,22,0.2); color: var(--accent); }
+
+.popup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(249,115,22,0.12);
+  border: 1px solid rgba(249,115,22,0.25);
+  border-radius: 20px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.popup-box h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.popup-box h3 em { font-style: italic; color: var(--accent); }
+
+.popup-box p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   CALCULATOR POPUP
+   ============================================================ */
+.calc-popup {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 520px;
+  width: calc(100% - 2rem);
+  position: relative;
+}
+
+.calc-result {
+  background: rgba(249,115,22,0.08);
+  border: 1px solid rgba(249,115,22,0.2);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calc-result-label { font-size: 0.8rem; color: var(--muted); }
+.calc-result-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-inner { grid-template-columns: 1fr 420px; gap: 3rem; }
+  .process-photo { width: 300px; }
+}
+
+@media (max-width: 900px) {
+  nav { z-index: 100; }
+  .nav-links, .nav-right .btn { display: none; }
+  .burger { display: flex; }
+  .hero-rating { display: none; }
+  .hero-stats { display: none; }
+  .hero-content { padding-top: 6rem; padding-bottom: 8rem; }
+  .hero-ctas { justify-content: center; }
+  .hero-checks { justify-content: center; }
+  .hero-title { text-align: center; }
+  .hero-sub { text-align: center; margin-left: auto; margin-right: auto; }
+  .hero-label { text-align: center; display: block; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-photo { display: none; }
+  .process-wrap { border-radius: var(--radius); }
+  .contact-inner { grid-template-columns: 1fr; }
+  .contact-left { text-align: center; }
+  .contact-benefits { align-items: center; }
+  .section-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  section { padding: 4rem 0; }
+  .container { padding: 0 1.25rem; }
+  .why-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .hero-ctas { flex-direction: column; width: 100%; }
+  .hero-ctas .btn { justify-content: center; width: 100%; }
+  .hero-checks { flex-direction: column; align-items: center; }
+  .form-glass { padding: 1.75rem 1.25rem; }
+  .stat-item { padding: 0 1.5rem; }
+  .calc-popup, .popup-box { padding: 1.75rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="logo" aria-label="AutoPrecision">Auto<span>Precision</span></a>
+
+      <ul class="nav-links" role="navigation">
+        <li><a href="#why"       data-i18n="nav_why">Чому ми</a></li>
+        <li><a href="#services"  data-i18n="nav_services">Послуги</a></li>
+        <li><a href="#portfolio" data-i18n="nav_portfolio">Роботи</a></li>
+        <li><a href="#contact"   data-i18n="nav_contact">Контакти</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button class="lang-btn active" onclick="switchLang('uk')">UA</button>
+          <button class="lang-btn" onclick="switchLang('pl')">PL</button>
+        </div>
+        <button class="btn btn-primary" onclick="openCalc()" data-i18n="nav_cta">Розрахувати вартість</button>
+      </div>
+
+      <button class="burger" id="burgerBtn" aria-label="Menu" onclick="toggleMobile()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true">
+  <button class="overlay-close" onclick="toggleMobile()" aria-label="Close">×</button>
+  <nav class="overlay-nav">
+    <a href="#why"       onclick="toggleMobile()" data-i18n="nav_why">Чому ми</a>
+    <a href="#services"  onclick="toggleMobile()" data-i18n="nav_services">Послуги</a>
+    <a href="#portfolio" onclick="toggleMobile()" data-i18n="nav_portfolio">Роботи</a>
+    <a href="#process"   onclick="toggleMobile()" data-i18n="nav_process">Як ми</a>
+    <a href="#contact"   onclick="toggleMobile()" data-i18n="nav_contact">Контакти</a>
+  </nav>
+  <div class="overlay-lang">
+    <button class="lang-btn active" onclick="switchLang('uk');toggleMobile()">UA</button>
+    <button class="lang-btn" onclick="switchLang('pl');toggleMobile()">PL</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="1.jpg" alt="Auto repair Warsaw" loading="eager">
+  </div>
+
+  <div class="hero-content">
+    <span class="label hero-label" data-i18n="hero_label">Варшава · СТО Преміум</span>
+    <h1 class="display hero-title" data-i18n="hero_title">Ваш автомобіль повертається<br><em>кращим, ніж вийшов із заводу</em></h1>
+    <p class="hero-sub" data-i18n="hero_sub">Ми не просто ремонтуємо — ми повертаємо вам впевненість на дорозі. Кожна деталь, кожен кілометр.</p>
+
+    <div class="hero-checks">
+      <div class="hero-check">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-i18n="hero_check1">Гарантія 12 місяців</span>
+      </div>
+      <div class="hero-check">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-i18n="hero_check2">Оригінальні запчастини</span>
+      </div>
+      <div class="hero-check">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-i18n="hero_check3">Відео-звіт по кожній роботі</span>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="openCalc()" data-i18n="hero_cta1">Розрахувати вартість →</button>
+      <a href="#services" class="btn btn-ghost" data-i18n="hero_cta2">Всі послуги</a>
+    </div>
+  </div>
+
+  <!-- Floating rating -->
+  <div class="hero-rating" aria-label="Google rating">
+    <div class="rating-stars">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+    <div class="rating-score">4.9</div>
+    <div class="rating-label" data-i18n="rating_label">312 відгуків Google</div>
+    <div class="rating-source">
+      <div class="google-g">G</div>
+      <span>Google Maps · Warszawa</span>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="hero-stats" role="list">
+    <div class="stat-item" role="listitem">
+      <span class="stat-num">8+</span>
+      <span class="stat-label" data-i18n="stat1">Років<br>досвіду</span>
+    </div>
+    <div class="stat-item" role="listitem">
+      <span class="stat-num">3 200</span>
+      <span class="stat-label" data-i18n="stat2">Авто<br>відремонтовано</span>
+    </div>
+    <div class="stat-item" role="listitem">
+      <span class="stat-num">98%</span>
+      <span class="stat-label" data-i18n="stat3">Клієнтів<br>повертаються</span>
+    </div>
+    <div class="stat-item" role="listitem">
+      <span class="stat-num">24h</span>
+      <span class="stat-label" data-i18n="stat4">Середній<br>час ремонту</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY US
+     ============================================================ -->
+<section id="why">
+  <div class="container">
+    <div class="reveal">
+      <span class="label" data-i18n="why_label">Закриваємо страхи</span>
+      <h2 class="section-title" data-i18n="why_title">Чому <em>довіряють</em> нам</h2>
+      <p class="section-sub" data-i18n="why_sub">Кожне рішення в нашому сервісі — це відповідь на питання, яке ви ще не встигли задати.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 data-i18n="why1_title">Гарантія, яку не відберуть</h3>
+        <p data-i18n="why1_text">12 місяців на кожну роботу без зірочок і винятків. Якщо щось пішло не так — ми виправляємо безкоштовно. Без суперечок.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.89L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+        </div>
+        <h3 data-i18n="why2_title">Бачите все в реальному часі</h3>
+        <p data-i18n="why2_text">Відео-діагностика, фото до/після, повний звіт на пошту. Ви знаєте, що відбувається з вашим авто, ще до того, як ми беремося за ключ.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 data-i18n="why3_title">Ціна фіксована до старту</h3>
+        <p data-i18n="why3_text">Жодних "виявили ще одну проблему". Ви отримуєте кошторис до початку робіт і платите саме стільки. Ні злотим більше.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+        </div>
+        <h3 data-i18n="why4_title">Майстри з 8+ роками практики</h3>
+        <p data-i18n="why4_text">Не стажери — сертифіковані механіки, які знають різницю між "схоже нормально" і "справді безпечно".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <span class="label" data-i18n="services_label">Наші послуги</span>
+        <h2 class="section-title" data-i18n="services_title">Що ми <em>робимо</em></h2>
+        <p class="section-sub" data-i18n="services_sub">Від першої діагностики до фінального блиску — повний цикл під одним дахом.</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <!-- Card 1 -->
+      <div class="service-card reveal reveal-delay-1">
+        <img src="1.jpg" alt="Діагностика">
+        <div class="service-overlay">
+          <span class="service-num">01</span>
+          <h3 data-i18n="svc1_title">Діагностика авто</h3>
+          <p data-i18n="svc1_text">Виявляємо проблеми, поки вони ще не перетворились на рахунок</p>
+          <button class="service-cta" onclick="openCalc()">
+            <span data-i18n="svc_cta">Дізнатися вартість</span> →
+          </button>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="service-card reveal reveal-delay-2">
+        <img src="2.jpeg" alt="Мастило">
+        <div class="service-overlay">
+          <span class="service-num">02</span>
+          <h3 data-i18n="svc2_title">Заміна мастила та фільтрів</h3>
+          <p data-i18n="svc2_text">Двигун, що живе довше конкурентів вашого авто</p>
+          <button class="service-cta" onclick="openCalc()">
+            <span data-i18n="svc_cta">Дізнатися вартість</span> →
+          </button>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="service-card reveal reveal-delay-3">
+        <img src="3.webp" alt="Підвіска">
+        <div class="service-overlay">
+          <span class="service-num">03</span>
+          <h3 data-i18n="svc3_title">Ремонт підвіски</h3>
+          <p data-i18n="svc3_text">Польські дороги не питають — ми готуємо вас заздалегідь</p>
+          <button class="service-cta" onclick="openCalc()">
+            <span data-i18n="svc_cta">Дізнатися вартість</span> →
+          </button>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="service-card reveal reveal-delay-4">
+        <img src="4.jpg" alt="Гальма">
+        <div class="service-overlay">
+          <span class="service-num">04</span>
+          <h3 data-i18n="svc4_title">Гальмівна система</h3>
+          <p data-i18n="svc4_text">Зупинитись вчасно — це не везіння, це наша робота</p>
+          <button class="service-cta" onclick="openCalc()">
+            <span data-i18n="svc_cta">Дізнатися вартість</span> →
+          </button>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="service-card reveal reveal-delay-5">
+        <img src="5.jpeg" alt="Кузов">
+        <div class="service-overlay">
+          <span class="service-num">05</span>
+          <h3 data-i18n="svc5_title">Кузовні роботи</h3>
+          <p data-i18n="svc5_text">Авто, яке виглядає як у перший день — без слідів часу</p>
+          <button class="service-cta" onclick="openCalc()">
+            <span data-i18n="svc_cta">Дізнатися вартість</span> →
+          </button>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="service-card reveal reveal-delay-6">
+        <img src="6.jpg" alt="Шиномонтаж">
+        <div class="service-overlay">
+          <span class="service-num">06</span>
+          <h3 data-i18n="svc6_title">Шиномонтаж</h3>
+          <p data-i18n="svc6_text">Сезонна зміна, балансування, зберігання — все в одному місці</p>
+          <button class="service-cta" onclick="openCalc()">
+            <span data-i18n="svc_cta">Дізнатися вартість</span> →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PORTFOLIO
+     ============================================================ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="reveal">
+      <span class="label" data-i18n="portfolio_label">Наші роботи</span>
+      <h2 class="section-title" data-i18n="portfolio_title">Результати, що <em>говорять самі</em></h2>
+      <p class="section-sub" data-i18n="portfolio_sub">Кожне авто — це окрема історія. Ось деякі з них.</p>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="portfolio-item reveal reveal-delay-1" onclick="openModal('1.jpg')">
+        <img src="1.jpg" alt="Portfolio 1" loading="lazy">
+        <div class="portfolio-zoom"><div class="portfolio-zoom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div></div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-2" onclick="openModal('2.jpeg')">
+        <img src="2.jpeg" alt="Portfolio 2" loading="lazy">
+        <div class="portfolio-zoom"><div class="portfolio-zoom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div></div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-3" onclick="openModal('3.webp')">
+        <img src="3.webp" alt="Portfolio 3" loading="lazy">
+        <div class="portfolio-zoom"><div class="portfolio-zoom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div></div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-4" onclick="openModal('4.jpg')">
+        <img src="4.jpg" alt="Portfolio 4" loading="lazy">
+        <div class="portfolio-zoom"><div class="portfolio-zoom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div></div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-5" onclick="openModal('5.jpeg')">
+        <img src="5.jpeg" alt="Portfolio 5" loading="lazy">
+        <div class="portfolio-zoom"><div class="portfolio-zoom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div></div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-6" onclick="openModal('6.jpg')">
+        <img src="6.jpg" alt="Portfolio 6" loading="lazy">
+        <div class="portfolio-zoom"><div class="portfolio-zoom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio modal -->
+<div class="modal-overlay" id="portfolioModal" onclick="closeModal(event)">
+  <div class="modal-img-wrap">
+    <img src="" id="modalImg" alt="Portfolio enlarged">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     HOW WE WORK
+     ============================================================ -->
+<section id="process">
+  <div class="container">
+    <div class="reveal">
+      <span class="label" data-i18n="process_label">Процес</span>
+      <h2 class="section-title" data-i18n="process_title">Від дзвінка до <em>ключів у руках</em></h2>
+      <p class="section-sub" data-i18n="process_sub">Чотири кроки — і ваш автомобіль повертається оновленим.</p>
+    </div>
+
+    <div class="process-wrap reveal" style="margin-top:3rem">
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3 data-i18n="step1_title">Запис онлайн або по телефону</h3>
+            <p data-i18n="step1_text">Обираєте зручний час — без черг і очікування. Підтвердження приходить миттєво.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3 data-i18n="step2_title">Відео-діагностика з поясненнями</h3>
+            <p data-i18n="step2_text">Майстер знімає відео і пояснює простою мовою, що знайшов і що потрібно зробити.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3 data-i18n="step3_title">Фіксована ціна — ви підтверджуєте</h3>
+            <p data-i18n="step3_text">Жодних сюрпризів. Тільки після вашого підтвердження кошторису ми починаємо роботу.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3 data-i18n="step4_title">Авто готове — ми дзвонимо</h3>
+            <p data-i18n="step4_text">Отримуєте повний звіт, гарантійний талон і авто, яке знову можна довіряти.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-photo">
+        <img src="3.webp" alt="Процес роботи" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REVIEWS
+     ============================================================ -->
+<section id="reviews">
+  <div class="container">
+    <div class="reveal">
+      <span class="label" data-i18n="reviews_label">Відгуки</span>
+      <h2 class="section-title" data-i18n="reviews_title">Що кажуть <em>клієнти</em></h2>
+    </div>
+  </div>
+
+  <div class="reviews-track-wrap" style="margin-top:3rem">
+    <div class="reviews-track" id="reviewsTrack">
+      <!-- Original 7 cards -->
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text" data-i18n="rev1_text">"Привіз авто з дивним стуком. За день знайшли причину, показали на відео, зробили. Тепер розумію, чому сюди повертаються."</p>
+        <div class="review-author">
+          <div class="review-avatar">ОК</div>
+          <div><div class="review-name">Олексій К.</div><div class="review-date">Google · 2 тижні тому</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text" data-i18n="rev2_text">"Byłem sceptyczny, ale zadzwoniłem. Wycena przed naprawą, wideo z diagnostyki — dokładnie tak jak opisali. Polecam bez wahania."</p>
+        <div class="review-author">
+          <div class="review-avatar">MN</div>
+          <div><div class="review-name">Marek N.</div><div class="review-date">Google · 1 miesiąc temu</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text" data-i18n="rev3_text">"Підвіска, гальма, заміна масла — все за один приїзд. Зробили швидше, ніж обіцяли. Ціна не змінилась. Це рідкість."</p>
+        <div class="review-author">
+          <div class="review-avatar">ІВ</div>
+          <div><div class="review-name">Ірина В.</div><div class="review-date">Google · 3 тижні тому</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text" data-i18n="rev4_text">"Mieszkam w Warszawie od 5 lat, szukałem porządnego serwisu. Znalazłem. Stałem się stałym klientem po pierwszej wizycie."</p>
+        <div class="review-author">
+          <div class="review-avatar">PW</div>
+          <div><div class="review-name">Piotr W.</div><div class="review-date">Google · 2 miesiące temu</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text" data-i18n="rev5_text">"BMW 5 серії — складне авто. Тут знають, що роблять. Діагностика точна, запчастини оригінальні. Довіряю цілком."</p>
+        <div class="review-author">
+          <div class="review-avatar">ДМ</div>
+          <div><div class="review-name">Дмитро М.</div><div class="review-date">Google · 1 місяць тому</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text" data-i18n="rev6_text">"Kuzovní práce były na najwyższym poziomie. Nawet nie widać gdzie był zarys. Polecam wszystkim Ukraińcom w Warszawie."</p>
+        <div class="review-author">
+          <div class="review-avatar">AK</div>
+          <div><div class="review-name">Anna K.</div><div class="review-date">Google · 3 tygodnie temu</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text" data-i18n="rev7_text">"Записався онлайн, приїхав, отримав відео-звіт, погодив ціну, забрав авто. Жодного зайвого слова, жодного зайвого злотого."</p>
+        <div class="review-author">
+          <div class="review-avatar">СП</div>
+          <div><div class="review-name">Сергій П.</div><div class="review-date">Google · 2 місяці тому</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA + FORM
+     ============================================================ -->
+<section id="contact">
+  <div class="contact-bg">
+    <img src="1.jpg" alt="Contact background" loading="lazy">
+  </div>
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <span class="label" data-i18n="contact_label">Запис онлайн</span>
+      <h2 data-i18n="contact_title">Ваш автомобіль заслуговує<br><em>кращого сервісу</em></h2>
+      <p data-i18n="contact_sub">Залиште заявку — і ми зателефонуємо протягом 15 хвилин, щоб підібрати зручний час.</p>
+      <div class="contact-benefits">
+        <div class="contact-benefit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          <span data-i18n="cb1">Безкоштовна первинна діагностика</span>
+        </div>
+        <div class="contact-benefit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          <span data-i18n="cb2">Фіксована ціна до початку робіт</span>
+        </div>
+        <div class="contact-benefit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          <span data-i18n="cb3">Гарантія 12 місяців на всі роботи</span>
+        </div>
+        <div class="contact-benefit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          <span data-i18n="cb4">Відповідь протягом 15 хвилин</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-glass reveal reveal-delay-2">
+      <!-- Form -->
+      <div id="mainForm">
+        <h3 class="form-title" data-i18n="form_title">Записатися на сервіс</h3>
+        <p class="form-sub" data-i18n="form_sub">Заповніть форму — ми зателефонуємо</p>
+
+        <form onsubmit="submitForm(event, 'mainFormBody', 'mainFormTY')">
+          <div id="mainFormBody">
+            <div class="form-group">
+              <label data-i18n="form_name">Ваше ім'я</label>
+              <input type="text" placeholder="Олександр" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="form_phone">Телефон</label>
+              <input type="tel" placeholder="+48 ..." required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="form_car">Марка та модель авто</label>
+              <input type="text" placeholder="Toyota Camry 2019">
+            </div>
+            <div class="form-group">
+              <label data-i18n="form_service">Потрібна послуга</label>
+              <select>
+                <option value="" data-i18n="form_choose">Оберіть послугу</option>
+                <option data-i18n="svc1_title">Діагностика авто</option>
+                <option data-i18n="svc2_title">Заміна мастила та фільтрів</option>
+                <option data-i18n="svc3_title">Ремонт підвіски</option>
+                <option data-i18n="svc4_title">Гальмівна система</option>
+                <option data-i18n="svc5_title">Кузовні роботи</option>
+                <option data-i18n="svc6_title">Шиномонтаж</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit" data-i18n="form_submit">Записатися безкоштовно →</button>
+          </div>
+          <div class="form-thankyou" id="mainFormTY">
+            <div class="thankyou-icon">✓</div>
+            <h3 data-i18n="ty_title">Заявку прийнято!</h3>
+            <p data-i18n="ty_text">Зателефонуємо вам протягом 15 хвилин.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="logo" style="margin-bottom:0.35rem">Auto<span>Precision</span></div>
+        <p class="footer-copy" data-i18n="footer_copy">© 2025 AutoPrecision Warsaw. Warszawa, Polska.</p>
+      </div>
+      <div class="footer-links">
+        <a href="tel:+48123456789">+48 123 456 789</a>
+        <a href="mailto:info@autoprecision.pl">info@autoprecision.pl</a>
+        <a href="#" data-i18n="footer_privacy">Конфіденційність</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     POPUP — scroll / timer
+     ============================================================ -->
+<div class="popup-overlay" id="bookingPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('bookingPopup')" aria-label="Close">×</button>
+    <div class="popup-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      <span data-i18n="popup_badge">Спеціальна пропозиція</span>
+    </div>
+    <h3 data-i18n="popup_title">Залиште контакт —<br>і ми <em>зателефонуємо першими</em></h3>
+    <p data-i18n="popup_sub">Безкоштовна консультація та первинна діагностика для нових клієнтів.</p>
+    <form onsubmit="submitForm(event, 'popupFormBody', 'popupFormTY')">
+      <div id="popupFormBody">
+        <div class="form-group">
+          <label data-i18n="form_name">Ваше ім'я</label>
+          <input type="text" placeholder="Ваше ім'я" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_phone">Телефон</label>
+          <input type="tel" placeholder="+48 ..." required>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" data-i18n="form_submit">Записатися безкоштовно →</button>
+      </div>
+      <div class="form-thankyou" id="popupFormTY">
+        <div class="thankyou-icon">✓</div>
+        <h3 data-i18n="ty_title">Заявку прийнято!</h3>
+        <p data-i18n="ty_text">Зателефонуємо вам протягом 15 хвилин.</p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================================
+     CALCULATOR POPUP
+     ============================================================ -->
+<div class="popup-overlay" id="calcPopup">
+  <div class="calc-popup">
+    <button class="popup-close" onclick="closePopup('calcPopup')" aria-label="Close">×</button>
+    <span class="label" data-i18n="calc_label">Калькулятор вартості</span>
+    <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:400;margin-bottom:0.35rem" data-i18n="calc_title">Розрахуйте вартість <em>за 30 секунд</em></h3>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem" data-i18n="calc_sub">Орієнтовна ціна. Точна вартість після діагностики.</p>
+
+    <div class="form-group">
+      <label data-i18n="calc_class">Клас автомобіля</label>
+      <select id="calcCar" onchange="calcPrice()">
+        <option value="1" data-i18n="calc_eco">Економ (Polo, Corsa, Fiesta)</option>
+        <option value="1.5" data-i18n="calc_mid">Середній (Golf, Focus, Megane)</option>
+        <option value="2" data-i18n="calc_prem">Преміум (BMW, Audi, Mercedes)</option>
+        <option value="2.8" data-i18n="calc_suv">SUV / Позашляховик</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="calc_service">Послуга</label>
+      <select id="calcService" onchange="calcPrice()">
+        <option value="150" data-i18n="svc1_title">Діагностика авто</option>
+        <option value="250" data-i18n="svc2_title">Заміна мастила та фільтрів</option>
+        <option value="800" data-i18n="svc3_title">Ремонт підвіски</option>
+        <option value="600" data-i18n="svc4_title">Гальмівна система</option>
+        <option value="1500" data-i18n="svc5_title">Кузовні роботи</option>
+        <option value="200" data-i18n="svc6_title">Шиномонтаж</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="calc_cond">Стан автомобіля</label>
+      <select id="calcCond" onchange="calcPrice()">
+        <option value="1" data-i18n="calc_good">Добрий (планове ТО)</option>
+        <option value="1.4" data-i18n="calc_avg">Середній (є симптоми)</option>
+        <option value="2" data-i18n="calc_bad">Складний (критичні несправності)</option>
+      </select>
+    </div>
+
+    <div class="calc-result">
+      <div>
+        <div class="calc-result-label" data-i18n="calc_est">Орієнтовна вартість</div>
+        <div style="font-size:0.7rem;color:var(--muted)" data-i18n="calc_from">від</div>
+      </div>
+      <div class="calc-result-price" id="calcResultPrice">150 zł</div>
+    </div>
+
+    <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="closePopup('calcPopup');openPopup('bookingPopup')" data-i18n="calc_book">Записатися за цією ціною</button>
+      <button class="btn btn-ghost" style="flex:1;justify-content:center" onclick="closePopup('calcPopup')" data-i18n="calc_close">Закрити</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ============================================================
+   TRANSLATIONS
+   ============================================================ */
+const TRANSLATIONS = {
+  uk: {
+    nav_why: 'Чому ми',
+    nav_services: 'Послуги',
+    nav_portfolio: 'Роботи',
+    nav_process: 'Як ми',
+    nav_contact: 'Контакти',
+    nav_cta: 'Розрахувати вартість',
+    hero_label: 'Варшава · СТО Преміум',
+    hero_title: 'Ваш автомобіль повертається<br><em>кращим, ніж вийшов із заводу</em>',
+    hero_sub: 'Ми не просто ремонтуємо — ми повертаємо вам впевненість на дорозі. Кожна деталь, кожен кілометр.',
+    hero_check1: 'Гарантія 12 місяців',
+    hero_check2: 'Оригінальні запчастини',
+    hero_check3: 'Відео-звіт по кожній роботі',
+    hero_cta1: 'Розрахувати вартість →',
+    hero_cta2: 'Всі послуги',
+    rating_label: '312 відгуків Google',
+    stat1: 'Років<br>досвіду',
+    stat2: 'Авто<br>відремонтовано',
+    stat3: 'Клієнтів<br>повертаються',
+    stat4: 'Середній<br>час ремонту',
+    why_label: 'Закриваємо страхи',
+    why_title: 'Чому <em>довіряють</em> нам',
+    why_sub: 'Кожне рішення в нашому сервісі — це відповідь на питання, яке ви ще не встигли задати.',
+    why1_title: 'Гарантія, яку не відберуть',
+    why1_text: '12 місяців на кожну роботу без зірочок і винятків. Якщо щось пішло не так — ми виправляємо безкоштовно. Без суперечок.',
+    why2_title: 'Бачите все в реальному часі',
+    why2_text: 'Відео-діагностика, фото до/після, повний звіт на пошту. Ви знаєте, що відбувається з вашим авто, ще до того, як ми беремося за ключ.',
+    why3_title: 'Ціна фіксована до старту',
+    why3_text: 'Жодних "виявили ще одну проблему". Ви отримуєте кошторис до початку робіт і платите саме стільки. Ні злотим більше.',
+    why4_title: 'Майстри з 8+ роками практики',
+    why4_text: 'Не стажери — сертифіковані механіки, які знають різницю між "схоже нормально" і "справді безпечно".',
+    services_label: 'Наші послуги',
+    services_title: 'Що ми <em>робимо</em>',
+    services_sub: 'Від першої діагностики до фінального блиску — повний цикл під одним дахом.',
+    svc1_title: 'Діагностика авто',
+    svc1_text: 'Виявляємо проблеми, поки вони ще не перетворились на рахунок',
+    svc2_title: 'Заміна мастила та фільтрів',
+    svc2_text: 'Двигун, що живе довше конкурентів вашого авто',
+    svc3_title: 'Ремонт підвіски',
+    svc3_text: 'Польські дороги не питають — ми готуємо вас заздалегідь',
+    svc4_title: 'Гальмівна система',
+    svc4_text: 'Зупинитись вчасно — це не везіння, це наша робота',
+    svc5_title: 'Кузовні роботи',
+    svc5_text: 'Авто, яке виглядає як у перший день — без слідів часу',
+    svc6_title: 'Шиномонтаж',
+    svc6_text: 'Сезонна зміна, балансування, зберігання — все в одному місці',
+    svc_cta: 'Дізнатися вартість',
+    portfolio_label: 'Наші роботи',
+    portfolio_title: 'Результати, що <em>говорять самі</em>',
+    portfolio_sub: 'Кожне авто — це окрема історія. Ось деякі з них.',
+    process_label: 'Процес',
+    process_title: 'Від дзвінка до <em>ключів у руках</em>',
+    process_sub: 'Чотири кроки — і ваш автомобіль повертається оновленим.',
+    step1_title: 'Запис онлайн або по телефону',
+    step1_text: 'Обираєте зручний час — без черг і очікування. Підтвердження приходить миттєво.',
+    step2_title: 'Відео-діагностика з поясненнями',
+    step2_text: 'Майстер знімає відео і пояснює простою мовою, що знайшов і що потрібно зробити.',
+    step3_title: 'Фіксована ціна — ви підтверджуєте',
+    step3_text: 'Жодних сюрпризів. Тільки після вашого підтвердження кошторису ми починаємо роботу.',
+    step4_title: 'Авто готове — ми дзвонимо',
+    step4_text: 'Отримуєте повний звіт, гарантійний талон і авто, яке знову можна довіряти.',
+    reviews_label: 'Відгуки',
+    reviews_title: 'Що кажуть <em>клієнти</em>',
+    rev1_text: '"Привіз авто з дивним стуком. За день знайшли причину, показали на відео, зробили. Тепер розумію, чому сюди повертаються."',
+    rev2_text: '"Byłem sceptyczny, ale zadzwoniłem. Wycena przed naprawą, wideo z diagnostyki — dokładnie tak jak opisali. Polecam bez wahania."',
+    rev3_text: '"Підвіска, гальма, заміна масла — все за один приїзд. Зробили швидше, ніж обіцяли. Ціна не змінилась. Це рідкість."',
+    rev4_text: '"Mieszkam w Warszawie od 5 lat, szukałem porządnego serwisu. Znalazłem. Stałem się stałym klientem po pierwszej wizycie."',
+    rev5_text: '"BMW 5 серії — складне авто. Тут знають, що роблять. Діагностика точна, запчастини оригінальні. Довіряю цілком."',
+    rev6_text: '"Kuzovní práce były na najwyższym poziomie. Nawet nie widać gdzie był zarys. Polecam wszystkim Ukraińcom w Warszawie."',
+    rev7_text: '"Записався онлайн, приїхав, отримав відео-звіт, погодив ціну, забрав авто. Жодного зайвого слова, жодного зайвого злотого."',
+    contact_label: 'Запис онлайн',
+    contact_title: 'Ваш автомобіль заслуговує<br><em>кращого сервісу</em>',
+    contact_sub: 'Залиште заявку — і ми зателефонуємо протягом 15 хвилин, щоб підібрати зручний час.',
+    cb1: 'Безкоштовна первинна діагностика',
+    cb2: 'Фіксована ціна до початку робіт',
+    cb3: 'Гарантія 12 місяців на всі роботи',
+    cb4: 'Відповідь протягом 15 хвилин',
+    form_title: 'Записатися на сервіс',
+    form_sub: 'Заповніть форму — ми зателефонуємо',
+    form_name: 'Ваше ім\'я',
+    form_phone: 'Телефон',
+    form_car: 'Марка та модель авто',
+    form_service: 'Потрібна послуга',
+    form_choose: 'Оберіть послугу',
+    form_submit: 'Записатися безкоштовно →',
+    ty_title: 'Заявку прийнято!',
+    ty_text: 'Зателефонуємо вам протягом 15 хвилин.',
+    popup_badge: 'Спеціальна пропозиція',
+    popup_title: 'Залиште контакт —<br>і ми <em>зателефонуємо першими</em>',
+    popup_sub: 'Безкоштовна консультація та первинна діагностика для нових клієнтів.',
+    calc_label: 'Калькулятор вартості',
+    calc_title: 'Розрахуйте вартість <em>за 30 секунд</em>',
+    calc_sub: 'Орієнтовна ціна. Точна вартість після діагностики.',
+    calc_class: 'Клас автомобіля',
+    calc_eco: 'Економ (Polo, Corsa, Fiesta)',
+    calc_mid: 'Середній (Golf, Focus, Megane)',
+    calc_prem: 'Преміум (BMW, Audi, Mercedes)',
+    calc_suv: 'SUV / Позашляховик',
+    calc_service: 'Послуга',
+    calc_cond: 'Стан автомобіля',
+    calc_good: 'Добрий (планове ТО)',
+    calc_avg: 'Середній (є симптоми)',
+    calc_bad: 'Складний (критичні несправності)',
+    calc_est: 'Орієнтовна вартість',
+    calc_from: 'від',
+    calc_book: 'Записатися за цією ціною',
+    calc_close: 'Закрити',
+    footer_copy: '© 2025 AutoPrecision Warsaw. Warszawa, Polska.',
+    footer_privacy: 'Конфіденційність',
+  },
+  pl: {
+    nav_why: 'Dlaczego my',
+    nav_services: 'Usługi',
+    nav_portfolio: 'Realizacje',
+    nav_process: 'Jak działamy',
+    nav_contact: 'Kontakt',
+    nav_cta: 'Oblicz koszt',
+    hero_label: 'Warszawa · Serwis Premium',
+    hero_title: 'Twój samochód wraca<br><em>lepszy niż ze fabryki</em>',
+    hero_sub: 'Nie tylko naprawiamy — przywracamy Ci pewność na drodze. Każdy detal, każdy kilometr.',
+    hero_check1: 'Gwarancja 12 miesięcy',
+    hero_check2: 'Oryginalne części',
+    hero_check3: 'Raport wideo z każdej naprawy',
+    hero_cta1: 'Oblicz koszt →',
+    hero_cta2: 'Wszystkie usługi',
+    rating_label: '312 opinii Google',
+    stat1: 'Lat<br>doświadczenia',
+    stat2: 'Samochodów<br>naprawionych',
+    stat3: 'Klientów<br>wraca ponownie',
+    stat4: 'Średni<br>czas naprawy',
+    why_label: 'Rozwiewamy obawy',
+    why_title: 'Dlaczego nam <em>ufają</em>',
+    why_sub: 'Każda decyzja w naszym serwisie to odpowiedź na pytanie, którego jeszcze nie zdążyłeś zadać.',
+    why1_title: 'Gwarancja bez gwiazdek',
+    why1_text: '12 miesięcy na każdą naprawę, bez wyjątków. Jeśli coś poszło nie tak — poprawiamy bezpłatnie. Bez dyskusji.',
+    why2_title: 'Widzisz wszystko na żywo',
+    why2_text: 'Wideo z diagnostyki, zdjęcia przed/po, pełny raport na e-mail. Wiesz co dzieje się z Twoim autem, zanim weźmiemy klucz.',
+    why3_title: 'Cena ustalona przed naprawą',
+    why3_text: 'Żadnych "znaleźliśmy coś jeszcze". Kosztorys przed startem i płacisz dokładnie tyle. Ani złotówki więcej.',
+    why4_title: 'Mechanicy z 8+ latami praktyki',
+    why4_text: 'Nie stażyści — certyfikowani specjaliści, którzy znają różnicę między "wygląda OK" a "naprawdę bezpieczne".',
+    services_label: 'Nasze usługi',
+    services_title: 'Co <em>robimy</em>',
+    services_sub: 'Od pierwszej diagnostyki do końcowego połysku — pełny cykl pod jednym dachem.',
+    svc1_title: 'Diagnostyka samochodu',
+    svc1_text: 'Wykrywamy problemy, zanim zmienią się w rachunek',
+    svc2_title: 'Wymiana oleju i filtrów',
+    svc2_text: 'Silnik żyjący dłużej niż rywale Twojego auta',
+    svc3_title: 'Naprawa zawieszenia',
+    svc3_text: 'Polskie drogi nie pytają — my przygotowujemy Cię wcześniej',
+    svc4_title: 'Układ hamulcowy',
+    svc4_text: 'Zatrzymać się w porę — to nie szczęście, to nasza praca',
+    svc5_title: 'Prace blacharskie',
+    svc5_text: 'Auto wyglądające jak pierwszego dnia — bez śladów czasu',
+    svc6_title: 'Wymiana opon',
+    svc6_text: 'Sezonowe opony, wyważanie, przechowywanie — wszystko w jednym miejscu',
+    svc_cta: 'Sprawdź cenę',
+    portfolio_label: 'Nasze realizacje',
+    portfolio_title: 'Wyniki, które <em>mówią same za siebie</em>',
+    portfolio_sub: 'Każde auto to osobna historia. Oto niektóre z nich.',
+    process_label: 'Proces',
+    process_title: 'Od telefonu do <em>kluczy w dłoni</em>',
+    process_sub: 'Cztery kroki — i Twój samochód wraca odnowiony.',
+    step1_title: 'Rezerwacja online lub telefonicznie',
+    step1_text: 'Wybierasz wygodny termin — bez kolejek i czekania. Potwierdzenie przychodzi natychmiast.',
+    step2_title: 'Diagnostyka wideo z wyjaśnieniami',
+    step2_text: 'Mechanik nagrywa wideo i tłumaczy prostym językiem, co znalazł i co trzeba zrobić.',
+    step3_title: 'Stała cena — Ty potwierdzasz',
+    step3_text: 'Żadnych niespodzianek. Dopiero po Twojej akceptacji kosztorysu zaczynamy pracę.',
+    step4_title: 'Auto gotowe — dzwonimy',
+    step4_text: 'Otrzymujesz pełny raport, kartę gwarancyjną i auto, któremu znów można ufać.',
+    reviews_label: 'Opinie',
+    reviews_title: 'Co mówią <em>klienci</em>',
+    rev1_text: '"Przywiozłem auto z dziwnym stukiem. W ciągu dnia znaleźli przyczynę, pokazali na wideo, naprawili. Teraz rozumiem, dlaczego tu wracają."',
+    rev2_text: '"Byłem sceptyczny, ale zadzwoniłem. Wycena przed naprawą, wideo z diagnostyki — dokładnie tak jak opisali. Polecam bez wahania."',
+    rev3_text: '"Zawieszenie, hamulce, wymiana oleju — wszystko w jednym przyjeździe. Zrobili szybciej niż obiecali. Cena się nie zmieniła. To rzadkość."',
+    rev4_text: '"Mieszkam w Warszawie od 5 lat, szukałem porządnego serwisu. Znalazłem. Stałem się stałym klientem po pierwszej wizycie."',
+    rev5_text: '"BMW serii 5 — skomplikowane auto. Tu wiedzą co robią. Diagnostyka precyzyjna, części oryginalne. Ufam w pełni."',
+    rev6_text: '"Prace blacharskie były na najwyższym poziomie. Nawet nie widać gdzie był zarys. Polecam wszystkim Ukraińcom w Warszawie."',
+    rev7_text: '"Zarezerwowałem online, przyjechałem, dostałem raport wideo, zaakceptowałem cenę, odebrałem auto. Żadnego zbędnego słowa, żadnej złotówki więcej."',
+    contact_label: 'Rezerwacja online',
+    contact_title: 'Twój samochód zasługuje<br><em>na lepszy serwis</em>',
+    contact_sub: 'Zostaw zgłoszenie — zadzwonimy w ciągu 15 minut, aby umówić dogodny termin.',
+    cb1: 'Bezpłatna wstępna diagnostyka',
+    cb2: 'Stała cena przed rozpoczęciem naprawy',
+    cb3: 'Gwarancja 12 miesięcy na wszystkie prace',
+    cb4: 'Odpowiedź w ciągu 15 minut',
+    form_title: 'Umów wizytę w serwisie',
+    form_sub: 'Wypełnij formularz — zadzwonimy',
+    form_name: 'Twoje imię',
+    form_phone: 'Telefon',
+    form_car: 'Marka i model samochodu',
+    form_service: 'Potrzebna usługa',
+    form_choose: 'Wybierz usługę',
+    form_submit: 'Umów wizytę bezpłatnie →',
+    ty_title: 'Zgłoszenie przyjęte!',
+    ty_text: 'Zadzwonimy do Ciebie w ciągu 15 minut.',
+    popup_badge: 'Oferta specjalna',
+    popup_title: 'Zostaw kontakt —<br>i <em>my zadzwonimy pierwsi</em>',
+    popup_sub: 'Bezpłatna konsultacja i diagnostyka wstępna dla nowych klientów.',
+    calc_label: 'Kalkulator kosztów',
+    calc_title: 'Oblicz koszt <em>w 30 sekund</em>',
+    calc_sub: 'Orientacyjna cena. Dokładny koszt po diagnostyce.',
+    calc_class: 'Klasa samochodu',
+    calc_eco: 'Ekonomiczny (Polo, Corsa, Fiesta)',
+    calc_mid: 'Średni (Golf, Focus, Megane)',
+    calc_prem: 'Premium (BMW, Audi, Mercedes)',
+    calc_suv: 'SUV / Terenowy',
+    calc_service: 'Usługa',
+    calc_cond: 'Stan samochodu',
+    calc_good: 'Dobry (planowy przegląd)',
+    calc_avg: 'Średni (są objawy)',
+    calc_bad: 'Zły (krytyczne usterki)',
+    calc_est: 'Orientacyjny koszt',
+    calc_from: 'od',
+    calc_book: 'Umów wizytę w tej cenie',
+    calc_close: 'Zamknij',
+    footer_copy: '© 2025 AutoPrecision Warsaw. Warszawa, Polska.',
+    footer_privacy: 'Polityka prywatności',
+  }
+};
+
+let currentLang = 'uk';
+
+function switchLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'uk' ? 'uk' : 'pl';
+
+  // Update lang button states
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const btnLang = btn.textContent.trim() === 'UA' ? 'uk' : 'pl';
+    btn.classList.toggle('active', btnLang === lang);
+  });
+
+  // Translate all elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const text = TRANSLATIONS[lang][key];
+    if (text !== undefined) {
+      el.innerHTML = text;
+    }
+  });
+
+  // Recalculate price display
+  calcPrice();
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* Mobile menu */
+function toggleMobile() {
+  const overlay = document.getElementById('mobileOverlay');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ============================================================
+   PORTFOLIO MODAL
+   ============================================================ */
+function openModal(src) {
+  document.getElementById('modalImg').src = src;
+  document.getElementById('portfolioModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('portfolioModal') || e.currentTarget.classList.contains('modal-close')) {
+    document.getElementById('portfolioModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+/* ============================================================
+   POPUPS
+   ============================================================ */
+function openPopup(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePopup(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function openCalc() {
+  calcPrice();
+  openPopup('calcPopup');
+}
+
+// Close popups on overlay click
+['bookingPopup','calcPopup'].forEach(id => {
+  document.getElementById(id).addEventListener('click', function(e) {
+    if (e.target === this) closePopup(id);
+  });
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['bookingPopup','calcPopup'].forEach(id => closePopup(id));
+    closeModal();
+    if (document.getElementById('mobileOverlay').classList.contains('open')) toggleMobile();
+  }
+});
+
+/* ============================================================
+   POPUP TRIGGER (60% scroll OR 25s)
+   ============================================================ */
+let popupShown = false;
+function maybeShowPopup() {
+  if (!popupShown) {
+    popupShown = true;
+    openPopup('bookingPopup');
+  }
+}
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  if (scrolled >= 0.6) maybeShowPopup();
+}, { passive: true });
+setTimeout(maybeShowPopup, 25000);
+
+/* ============================================================
+   CALCULATOR
+   ============================================================ */
+function calcPrice() {
+  const car = parseFloat(document.getElementById('calcCar').value) || 1;
+  const svc = parseFloat(document.getElementById('calcService').value) || 150;
+  const cond = parseFloat(document.getElementById('calcCond').value) || 1;
+  const price = Math.round(svc * car * cond / 10) * 10;
+  document.getElementById('calcResultPrice').textContent = price.toLocaleString('pl-PL') + ' zł';
+}
+
+/* ============================================================
+   REVIEWS CLONE
+   ============================================================ */
+(function() {
+  const track = document.getElementById('reviewsTrack');
+  const clone = track.innerHTML;
+  track.innerHTML += clone;
+})();
+
+/* ============================================================
+   FORM SUBMIT
+   ============================================================ */
+function submitForm(e, bodyId, tyId) {
+  e.preventDefault();
+  document.getElementById(bodyId).style.display = 'none';
+  const ty = document.getElementById(tyId);
+  ty.style.display = 'flex';
+}
+
+/* ============================================================
+   SMOOTH SCROLL
+   ============================================================ */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
