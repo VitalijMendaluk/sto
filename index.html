@@ -2292,11 +2292,68 @@ function calcPrice() {
 })();
 
 /* ============================================================
+   TELEGRAM BOT
+   ============================================================ */
+const TG_TOKEN   = '8090010233:AAGucMxosOir1f7ttPIUODULMbO2DYoqTHU';
+const TG_CHAT_ID = '-4934715371';
+const TG_URL     = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
+
+async function sendToTelegram(text) {
+  try {
+    await fetch(TG_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TG_CHAT_ID,
+        text,
+        parse_mode: 'HTML'
+      })
+    });
+  } catch (err) {
+    console.warn('Telegram send error:', err);
+  }
+}
+
+/* ============================================================
    FORM SUBMIT
    ============================================================ */
-function submitForm(e, bodyId, tyId) {
+async function submitForm(e, bodyId, tyId) {
   e.preventDefault();
-  document.getElementById(bodyId).style.display = 'none';
+
+  const body    = document.getElementById(bodyId);
+  const inputs  = body.querySelectorAll('input, select, textarea');
+  const lang    = currentLang;
+
+  /* Збираємо поля */
+  const fields  = {};
+  inputs.forEach(el => {
+    const label = el.closest('.form-group')?.querySelector('label');
+    const key   = label ? label.textContent.trim() : el.name || el.type;
+    const val   = el.value.trim();
+    if (val) fields[key] = val;
+  });
+
+  /* Визначаємо джерело (форма чи popup) */
+  const source = bodyId === 'popupFormBody'
+    ? (lang === 'uk' ? '📋 Popup-форма' : '📋 Formularz popup')
+    : (lang === 'uk' ? '📝 Основна форма' : '📝 Formularz główny');
+
+  /* Формуємо текст повідомлення */
+  const lines = [
+    `🚗 <b>AutoPrecision Warsaw — нова заявка</b>`,
+    `<b>Джерело:</b> ${source}`,
+    `━━━━━━━━━━━━━━━━━━`
+  ];
+  Object.entries(fields).forEach(([k, v]) => {
+    lines.push(`<b>${k}:</b> ${v}`);
+  });
+  lines.push(`━━━━━━━━━━━━━━━━━━`);
+  lines.push(`🕐 ${new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Warsaw' })}`);
+
+  /* Надсилаємо та показуємо Thank You */
+  await sendToTelegram(lines.join('\n'));
+
+  body.style.display = 'none';
   const ty = document.getElementById(tyId);
   ty.style.display = 'flex';
 }
