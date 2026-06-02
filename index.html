@@ -1918,7 +1918,7 @@ footer {
     </div>
 
     <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
-      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="closePopup('calcPopup');openPopup('bookingPopup')" data-i18n="calc_book">Записатися за цією ціною</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="bookFromCalc()" data-i18n="calc_book">Записатися за цією ціною</button>
       <button class="btn btn-ghost" style="flex:1;justify-content:center" onclick="closePopup('calcPopup')" data-i18n="calc_close">Закрити</button>
     </div>
   </div>
@@ -2274,12 +2274,33 @@ setTimeout(maybeShowPopup, 25000);
 /* ============================================================
    CALCULATOR
    ============================================================ */
+let lastCalcData = null; // зберігаємо дані калькулятора
+
 function calcPrice() {
-  const car = parseFloat(document.getElementById('calcCar').value) || 1;
-  const svc = parseFloat(document.getElementById('calcService').value) || 150;
-  const cond = parseFloat(document.getElementById('calcCond').value) || 1;
+  const car  = parseFloat(document.getElementById('calcCar').value)     || 1;
+  const svc  = parseFloat(document.getElementById('calcService').value)  || 150;
+  const cond = parseFloat(document.getElementById('calcCond').value)     || 1;
   const price = Math.round(svc * car * cond / 10) * 10;
   document.getElementById('calcResultPrice').textContent = price.toLocaleString('pl-PL') + ' zł';
+}
+
+function getCalcSnapshot() {
+  const carEl   = document.getElementById('calcCar');
+  const svcEl   = document.getElementById('calcService');
+  const condEl  = document.getElementById('calcCond');
+  const priceEl = document.getElementById('calcResultPrice');
+  return {
+    car:   carEl.options[carEl.selectedIndex].text,
+    svc:   svcEl.options[svcEl.selectedIndex].text,
+    cond:  condEl.options[condEl.selectedIndex].text,
+    price: priceEl.textContent
+  };
+}
+
+function bookFromCalc() {
+  lastCalcData = getCalcSnapshot(); // зберігаємо перед закриттям
+  closePopup('calcPopup');
+  openPopup('bookingPopup');
 }
 
 /* ============================================================
@@ -2347,6 +2368,18 @@ async function submitForm(e, bodyId, tyId) {
   Object.entries(fields).forEach(([k, v]) => {
     lines.push(`<b>${k}:</b> ${v}`);
   });
+
+  /* Додаємо дані калькулятора, якщо є */
+  if (lastCalcData) {
+    lines.push(`━━━━━━━━━━━━━━━━━━`);
+    lines.push(`🧮 <b>Дані калькулятора</b>`);
+    lines.push(`<b>Клас авто:</b> ${lastCalcData.car}`);
+    lines.push(`<b>Послуга:</b> ${lastCalcData.svc}`);
+    lines.push(`<b>Стан авто:</b> ${lastCalcData.cond}`);
+    lines.push(`<b>💰 Орієнтовна ціна:</b> ${lastCalcData.price}`);
+    lastCalcData = null; // скидаємо після надсилання
+  }
+
   lines.push(`━━━━━━━━━━━━━━━━━━`);
   lines.push(`🕐 ${new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Warsaw' })}`);
 
